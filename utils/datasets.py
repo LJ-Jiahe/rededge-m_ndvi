@@ -9,6 +9,7 @@ from .functions import sort_key
 
 class RedEdgeDataset(Dataset):
     def __init__(self, data_dir, transform=None):
+        self.band_names = ["blue", "green", "red", "near_ir", "red_edge"]
         self.data_dir = data_dir
         self.transform = transform
 
@@ -32,5 +33,5 @@ class RedEdgeDataset(Dataset):
         images = dict()
         for ite, content in enumerate(self.contents[idx]):
             image = Image.open(content)
-            images['image' + str(ite+1)] = self.transform(image)
+            images[self.band_names[ite]] = self.transform(image)
         return images
