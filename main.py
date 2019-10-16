@@ -4,6 +4,8 @@ from torchvision import transforms
 from torchvision.utils import save_image
 from tqdm import tqdm
 from matplotlib import pyplot as plt
+import numpy as np
+import torch
 
 from utils import RedEdgeDataset, ndvi
 
@@ -16,10 +18,12 @@ dataloader = DataLoader(dataset=dataset,
                         shuffle=False)
 
 for ite, images in enumerate(tqdm(dataloader, desc="Saving images")):
-    ndvi_value = ndvi(images)[0]
-    # save_image(ndvi_value, "ndvi/"+str(ite)+".png")
-    ndvi_value = ndvi_value[0]
-    print(ndvi_value.min())
-    print(ndvi_value.max())
-    plt.imsave("ndvi/"+str(ite)+".png", ndvi_value, cmap=None)
+    ndvi_value = ndvi(images)
+    plt.figure()
+    img = plt.imshow(ndvi_value)
+    img.set_cmap('RdYlGn')
+    plt.axis('off')
+    plt.savefig("ndvi_matplotlib/"+str(ite)+".png", bbox_inches='tight')
+    plt.close()
+    # save_image(ndvi_value, "ndvi/"+str(ite)+".jpg")
 

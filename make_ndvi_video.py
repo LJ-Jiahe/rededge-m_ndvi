@@ -4,7 +4,7 @@ import cv2
 from tqdm import tqdm
 
 
-image_folder = 'ndvi'
+image_folder = 'ndvi_matplotlib'
 video_name = 'ndvi.avi'
 
 images = [img for img in os.listdir(image_folder) if img.endswith(".png")]
@@ -18,5 +18,5 @@ video = cv2.VideoWriter(video_name, 0, 10, (width,height))
 for image in tqdm(images):
     video.write(cv2.imread(os.path.join(image_folder, image)))
 
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
 video.release()

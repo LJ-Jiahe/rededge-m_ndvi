@@ -33,5 +33,7 @@ class RedEdgeDataset(Dataset):
         images = dict()
         for ite, content in enumerate(self.contents[idx]):
             image = Image.open(content)
+            image = np.array(image) / 2**16
             images[self.band_names[ite]] = self.transform(image)
+            
         return images
