@@ -22,12 +22,14 @@ for ite, images in enumerate(tqdm(dataloader, desc="Saving images")):
     ndvi_value = ndvi(images)
 
     # Saving colored image
-    plt.figure()
+    plt.figure(frameon=False)
     img = plt.imshow(ndvi_value)
     img.set_cmap(cfg.colormap)
     plt.axis('off')
     plt.savefig(fname=cfg.ndvi_image_dir_colored + str(ite) + cfg.image_extension, 
-                bbox_inches='tight')
+                bbox_inches='tight',
+                pad_inches=0,
+                dpi=300)
     plt.close()
     
     # Saving grayscale image

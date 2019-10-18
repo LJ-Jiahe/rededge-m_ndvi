@@ -22,5 +22,5 @@ video = cv2.VideoWriter(filename=cfg.video_name,
 for image in tqdm(images):
     video.write(cv2.imread(os.path.join(image_folder, image)))
 
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
 video.release()

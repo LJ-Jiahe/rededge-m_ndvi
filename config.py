@@ -8,5 +8,5 @@ ndvi_image_dir_grayscale = "ndvi_grayscale/"
 
 image_extension = ".png"
 
-image_range = slice(0, 12)
-video_name = 'ndvi.avi'
+image_range = slice(200, 650)
+video_name = 'ndvi_colored.avi'
